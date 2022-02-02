@@ -1,10 +1,8 @@
-CREATE TABLE users(
+DROP TABLE IF EXISTS questions CASCADE;
+
+CREATE TABLE questions (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(50)
+  question_string TEXT NOT NULL, 
+  correct_option_id REFERENCES options(id) ON DELETE CASCADE,
 );
 
-CREATE TABLE quizzes(
-  id SERIAL PRIMARY KEY NOT NULL,
-  title VARCHAR(255),
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
-);
